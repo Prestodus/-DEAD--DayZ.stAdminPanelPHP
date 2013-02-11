@@ -33,6 +33,7 @@ Once the registration is complete, you need to create a new webhosting account.
 -------------
 After that, you will receive an FTP host, username and password. (I currently cannot test the steps due to maintenance on Zymic)
 Next, you will need an FTP client. I recommend CoffeeCup (http://www.coffeecup.com/free-ftp/) due to it being super-simple yet effective.
+Download and install it.
 
 3: Editing config.php
 ---------------------
@@ -60,3 +61,5 @@ To have multiple users, make a new line with the same format as the first line, 
 For multiple users, every user except the last one should have a comma (,) at the end of the line.
 
 4: Uploading to the webhost
+---------------------------
+Open up your FTP program.
