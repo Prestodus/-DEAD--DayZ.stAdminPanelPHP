@@ -43,15 +43,13 @@ Here's what you need to edit: (You can find this information in the dayz.st cont
 - Line 4: $DB_CONNSTRING (2nd one): The database host:port. If you host with dayz.st this should be db.dayz.st:3306
 - Line 6: $DB_CONNSTRING (4th one): The database name. This is probably the same as the database username. For dayz.st: bliss_**** where **** is a number.
 - Line 7: $DB_USERNAME: The database username. Probably the same as the database name.
-- Line 8: $DB_PASSWORD: The databse password
+- Line 8: $DB_PASSWORD: The database password
 - Line 9: $ST_PASSWORD: Your dayz.st password
-
 - Line 11: define("URLVARS", "u=dayzstuser&p=dayzstpasswordhash");
 Go to your control panel and click the minimap. A new browser tab should open.
 In the new browser tab, copy the part of the url after http://dayz.st/map?****** where ****** is what you need to copy.
 It should be in the format of u=***&p=***.
 Now replace u=dayzstuser&p=dayzstpasswordhash on line 11 with what you just copied.
-
 - Line 13: $users
 Here you can specify multiple users.
 The default user's username and password are "admin".
@@ -63,3 +61,21 @@ For multiple users, every user except the last one should have a comma (,) at th
 4: Uploading to the webhost
 ---------------------------
 Open up your FTP program.
+Add a new server. For CoffeeCup FTP:
+- Click on servers.
+- Click on the green plus.
+- Enter a nickname for the server.
+- Enter the server host, username and password.
+- Connect.
+- Navigate to where you want to upload the website (Can be a folder called htdocs, public_html, or something else, depending on your webhost).
+- Upload everything.
+- Navigate to the correct URL in your browser.
+- Profit.
+
+Troubleshooting
+===============
+If you get an error like the following:
+- Fatal error: Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2005] Unknown MySQL server host 'db.dayz.st:1111' (3)' in /public_html/admin/index.php:10 Stack trace: #0 /home/a9156499/public_html/admin/index.php(10): PDO->__construct('mysql:host=db.d...', 'bliss_111', '11111111') #1 {main} thrown in /public_html/admin/index.php on line 10
+Try removing :port from the $DB_CONNSTRING on line 4 in config.php and reuploading it.
+
+If there are any more problems, please contact me on skype (swaxtraxx) or email (rubencoolen@live.be).
