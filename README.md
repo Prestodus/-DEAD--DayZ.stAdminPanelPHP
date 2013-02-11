@@ -76,6 +76,7 @@ Troubleshooting
 ===============
 If you get an error like the following:
 - Fatal error: Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2005] Unknown MySQL server host 'db.dayz.st:1111' (3)' in /public_html/admin/index.php:10 Stack trace: #0 /home/a9156499/public_html/admin/index.php(10): PDO->__construct('mysql:host=db.d...', 'bliss_111', '11111111') #1 {main} thrown in /public_html/admin/index.php on line 10
+
 Try removing :port from the $DB_CONNSTRING on line 4 in config.php and reuploading it.
 
 If there are any more problems, please contact me on skype (swaxtraxx) or email (rubencoolen@live.be).
