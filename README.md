@@ -1,5 +1,5 @@
-DayZ.stAdminPanelPHP
-====================
+DayZ.stAdminPanelPHP (Current version: 1.2)
+===========================================
 
 About / Features
 ================
