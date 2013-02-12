@@ -10,11 +10,18 @@ else {
         $survivorid = $_GET["survivor"];
         $querysurvivor = "SELECT survivor.id, survivor.model, survivor.worldspace, survivor.unique_id, profile.unique_id AS profileid, profile.name, profile.humanity, start_time, last_updated, medical FROM survivor, profile WHERE survivor.unique_id = profile.unique_id AND survivor.id = '$survivorid' AND is_dead = '0' ORDER BY id LIMIT 1";
         $count = $dbh->query($querysurvivor)->fetchAll();
+        
         if (count($count) < 1) {
                 
             echo "No matching alive survivors have been found.<br>The survivor you are looking for may have died before opening this page.";
                 
         } else {
+            
+            $query = $dbh->prepare("SELECT instance.world_id AS world_id, world.max_y AS max_y FROM instance, world WHERE instance.world_id = world.id LIMIT 1");
+            $query->execute();
+            $world = $query->fetch();
+            $worlds = array("1" => "", "2" => "/lingor", "3" => "/", "4" => "/takistan", "5" => "/panthera", "6" => "/fallujah", "7" => "/", "8" => "namalsk", "9" => "/", "10" => "taviana");
+    		$worldid = $worlds[$world["world_id"]];
             
             if (isset($_POST["humanity"])) {
                 
@@ -47,8 +54,12 @@ else {
                 $explodeworldspace = explode(",", $survivor["worldspace"]);
                 $xcoords = (int)str_replace("[", "", $explodeworldspace["1"]);
                 $ycoords = (int)$explodeworldspace["2"];
-                $xcoords = str_pad((int)round($xcoords/100), 3, "0", STR_PAD_LEFT);
-                $ycoords = str_pad((int)round((15360-$ycoords)/100), 3, "0", STR_PAD_LEFT);
+				if ($world["world_id"] == "1") {
+				
+					$xcoords = str_pad((int)round($xcoords/100), 3, "0", STR_PAD_LEFT);
+					$ycoords = str_pad((int)round(($world["max_y"]-$ycoords)/100), 3, "0", STR_PAD_LEFT);
+				
+				}
                 
                 ?>
                 
@@ -87,12 +98,16 @@ else {
     				
                 }
                 echo $survivor["model"]."</select></td></tr>";
-                echo "<tr><td style='font-weight: bold; font-size: 15px;'><input type='submit' value='Submit' style='width: 100%;'></td><td><a href=\"javascript:popUp('http://dayz.st/loadout?".URLVARS."&id=".$survivor["id"]."')\">Show inventory</a>&nbsp;&nbsp;&nbsp;".(strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome')!==false?"<a href=\"#posdiv\" onclick=\"toggle();\">Show/hide position</a>":"<a href='http://www.dayzdb.com/map#6.$xcoords.$ycoords' target='_blank'>Show position</a>")."</td></tr>";
+                echo "<tr><td style='font-weight: bold; font-size: 15px;'><input type='submit' value='Submit' style='width: 100%;'></td><td><a href=\"javascript:popUp('http://dayz.st/loadout?".URLVARS."&id=".$survivor["id"]."')\">Show inventory</a>";
+                if ($worldid !== "/") echo "&nbsp;&nbsp;&nbsp;".(strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome')!==false?"<a href=\"#posdiv\" onclick=\"toggle();\">Show/hide approximate position</a>":"<a href='http://www.dayzdb.com/map$worldid#5.$xcoords.$ycoords' target='_blank'>Show approximate position</a>");
+                echo "</td></tr>";
                 
                 ?>
                 
                 </tbody></table></div></form>
-                <?php if (strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome')!==false) { ?><div style="display: none; margin-top: 20px;" class="iframe" id="posdiv"><iframe src="http://www.dayzdb.com/map#6.<?php echo $xcoords.".".$ycoords;?>" width="100%" height="500px" seamless></iframe></div>
+                <?php if (strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== false AND $worldid !== "/") { ?>
+                
+                    <div style="display: none; margin-top: 20px;" class="iframe" id="posdiv"><iframe src="http://www.dayzdb.com/map<?php echo $worldid; ?>#5.<?php echo $xcoords.".".$ycoords;?>" width="100%" height="500px" seamless></iframe></div>
                 
                 <?php
                 
