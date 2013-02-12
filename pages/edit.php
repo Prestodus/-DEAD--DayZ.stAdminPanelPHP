@@ -33,7 +33,7 @@ else {
                 $update1->execute();
                 $update2 = $dbh->prepare($updatequery2);
                 $update2->execute();
-                echo "De survivor is geupdate.<br><a href='./?p=edit&survivor=".$_POST["id"]."'>Ga terug</a>";
+                echo "The survivor has been updated.<br><a href='./?p=edit&survivor=".$_POST["id"]."'>Go back</a>";
                 
             } else {
                 
