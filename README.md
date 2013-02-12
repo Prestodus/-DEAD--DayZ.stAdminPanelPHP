@@ -1,5 +1,8 @@
-DayZ.stAdminPanelPHP (Current version: 1.2)
+DayZ.stAdminPanelPHP (Current version: 1.3)
 ===========================================
+
+Now supports other worlds than Chernarus!
+To update from 1.2 to 1.3, download the new pages/edit.php and overwrite it.
 
 About / Features
 ================
