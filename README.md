@@ -26,8 +26,7 @@ Installation
 ----------
 To install this, you will need a webhost.
 The requirements are that it should have PHP support and preferrably FTP access (could do with browser-based file manager).
-If you do not have any webhosting plan yet, I recommend the following free host: http://www.zymic.com/
-Once the registration is complete, you need to create a new webhosting account.
+It should also allow external database access and have the module pdo_mysql installed.
 
 2: FTP client (Skip if you already have one)
 -------------
