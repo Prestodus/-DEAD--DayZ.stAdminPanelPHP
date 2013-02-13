@@ -5,9 +5,9 @@
 if ($loggedin === false) { echo "Please log in to access the admin panel."; include_once("login.php"); }
 else {
     
-    echo "<div style=\"float: left; width: 200px; display: inline-block; text-align: center;\"><a href=\"./?p=server&action=restart\" style=\"font-size: 20pt;\">Start server</a></div>";
-    echo "<div style=\"float: left; width: 200px; display: inline-block; text-align: center;\"><a href=\"./?p=server&action=restart\" style=\"font-size: 20pt;\">Stop server</a></div>";
-    echo "<div style=\"float: left; width: 200px; display: inline-block; text-align: center;\"><a href=\"./?p=server&action=restart\" style=\"font-size: 20pt;\">Restart server</a></div><div style=\"clear: both; margin-bottom: 20px;\"></div>";
+    echo "<div style=\"float: left; width: 200px; display: inline-block; text-align: left;\"><a href=\"./?p=server&action=restart\" style=\"font-size: 20pt;\">Start server</a></div>";
+    echo "<div style=\"float: left; width: 200px; display: inline-block; text-align: left;\"><a href=\"./?p=server&action=restart\" style=\"font-size: 20pt;\">Stop server</a></div>";
+    echo "<div style=\"float: left; width: 200px; display: inline-block; text-align: left;\"><a href=\"./?p=server&action=restart\" style=\"font-size: 20pt;\">Restart server</a></div><div style=\"clear: both; margin-bottom: 20px;\"></div>";
     
     echo "Click on one of the menu items or one of the links below to start.<br>";
 	echo "<p><a href=\"javaScript: popUp('http://dayz.st/ajax?a=spawnvehicles&".URLVARS."&limit=300');\">Click here to remove all old, damaged vehicles and respawn new ones</a>.<br />";
