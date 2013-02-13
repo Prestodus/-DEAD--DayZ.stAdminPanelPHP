@@ -29,6 +29,15 @@ else {
                 if (isset($_POST["uncounscious"]) AND $_POST["uncounscious"] == "true") $uncounscious = "true"; else $uncounscious = "false";
                 if (isset($_POST["infected"]) AND $_POST["infected"] == "true") $infected = "true"; else $infected = "false";
                 if (isset($_POST["pain"]) AND $_POST["pain"] == "true") $pain = "true"; else $pain = "false";
+				if ($_POST["teleport"] !== "0") {
+				
+					$query = $dbh->prepare("SELECT worldspace FROM survivor WHERE id = '".$_POST["teleport"]."'");
+					$query->execute();
+					$player = $query->fetch();
+					$updateworldspace = $dbh->prepare("UPDATE survivor SET worldspace = '".$player["worldspace"]."' WHERE id = '".$_POST["id"]."'");
+					$updateworldspace->execute();
+				
+				}
                 $blood = (is_numeric($_POST["blood"])&&$_POST["blood"]<=12000&&$_POST["blood"]>0?$_POST["blood"]:$_POST["oldblood"]);
                 $humanity = (is_numeric($_POST["humanity"])&&$_POST["humanity"]>=-50000&&$_POST["humanity"]<15000?$_POST["humanity"]:$_POST["oldhumanity"]);
                 $explode = explode(",", $_POST["oldmedical"]);
@@ -98,7 +107,17 @@ else {
     				
                 }
                 echo $survivor["model"]."</select></td></tr>";
-                echo "<tr><td style='font-weight: bold; font-size: 15px;'><input type='submit' value='Submit' style='width: 100%;'></td><td><a href=\"javascript:popUp('http://dayz.st/loadout?".URLVARS."&id=".$survivor["id"]."')\">Show inventory</a>";
+                echo "<tr><td style='font-weight: bold; font-size: 15px;'>Teleport to</td><td><select name='teleport'><option value='0' selected='selected'>Do not teleport</option>";
+				$query = $dbh->prepare("SELECT profile.name, survivor.id FROM survivor, profile WHERE survivor.unique_id = profile.unique_id AND survivor.is_dead = '0' ORDER BY profile.name");
+				$query->execute();
+				$allplayers = $query->fetchAll();
+                foreach ($allplayers as $teleportto) {
+    				
+    				echo "<option value='".$teleportto["id"]."'>".$teleportto["name"]."</option>";
+    				
+                }
+                echo $survivor["model"]."</select></td></tr>";
+                echo "<tr$alt><td style='font-weight: bold; font-size: 15px;'><input type='submit' value='Submit' style='width: 100%;'></td><td><a href=\"javascript:popUp('http://dayz.st/loadout?".URLVARS."&id=".$survivor["id"]."')\">Show inventory</a>";
                 if ($worldid !== "/") echo "&nbsp;&nbsp;&nbsp;".(strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome')!==false?"<a href=\"#posdiv\" onclick=\"toggle();\">Show/hide approximate position</a>":"<a href='http://www.dayzdb.com/map$worldid#5.$xcoords.$ycoords' target='_blank'>Show approximate position</a>");
                 echo "</td></tr>";
                 
