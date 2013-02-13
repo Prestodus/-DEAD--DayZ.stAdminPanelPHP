@@ -30,6 +30,7 @@ Installation
 To install this, you will need a webhost.
 The requirements are that it should have PHP support and preferrably FTP access (could do with browser-based file manager).
 It should also allow external database access and have the module pdo_mysql installed.
+I recommend http://www.000webhost.com, it does the job quite well.
 
 2: FTP client (Skip if you already have one)
 -------------
