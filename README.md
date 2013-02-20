@@ -1,14 +1,13 @@
-DayZ.stAdminPanelPHP (Current version: 1.3)
+DayZ.stAdminPanelPHP (Current version: 1.4)
 ===========================================
-
-Now supports other worlds than Chernarus!
-To update from 1.2 to 1.3, download the new pages/edit.php and overwrite it.
+New: manage your admin users and permissions through the admin panel! Default admin account: username "admin", password "admin". Please change this!
 
 About / Features
 ================
 This is an administration panel for servers hosted on DayZ.st.
 The current features include:
-   -   Secure admin login with multiple users
+   -   Support for all worlds
+   -   Secure admin login with multiple users and editable permissions
    -   Respawn broken vehicles
    -   Link to the dayz.st map of your server
    -   Link to database with instant login and database selection
@@ -53,13 +52,6 @@ Go to your control panel and click the minimap. A new browser tab should open.
 In the new browser tab, copy the part of the url after http://dayz.st/map?****** where ****** is what you need to copy.
 It should be in the format of u=***&p=***.
 Now replace u=dayzstuser&p=dayzstpasswordhash on line 11 with what you just copied.
-- Line 13: $users
-Here you can specify multiple users.
-The default user's username and password are "admin".
-To change the username, replace the first word (admin) with a new username.
-To change the password, go to http://md5encryption.com/ and enter the password you want to use, encrypt it, and then copy the hash to the second part.
-To have multiple users, make a new line with the same format as the first line, but different values.
-For multiple users, every user except the last one should have a comma (,) at the end of the line.
 
 4: Uploading to the webhost
 ---------------------------
