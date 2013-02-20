@@ -1,7 +1,7 @@
 <h1>Restart server</h1>
 <?php
 
-if ($loggedin === false) { echo "Please log in to access the server page."; include_once("login.php"); }
+if ($loggedin === false OR !rights("server")) { echo "Please log in to access the server page."; include_once("login.php"); }
 else {
     
     $action = $_GET["action"];

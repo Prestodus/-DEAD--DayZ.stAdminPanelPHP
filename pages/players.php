@@ -64,16 +64,17 @@ else {
         ?>
         
         <div class="datagrid"><table>
-        <thead><tr><th>&nbsp;</th><th>Inventory</th><th>Name</th><th>ID</th><th>Unique ID</th><th>Survived</th><th>Last update</th></tr></thead>
+        <thead><tr><?php if (rights("survivor")) echo "<th>&nbsp;</th>"; ?><?php if (rights("inventory")) echo "<th>Inventory</th>"; ?><th>Name</th><th>ID</th><th>Unique ID</th><th>Survived</th><th>Last update</th></tr></thead>
         <tbody>
         
         <?php
         $alt = " class=\"alt\"";
         foreach ($dbh->query($queryselect) AS $survivor) {
              
-            echo "<tr$alt><td><a href='./?p=edit&survivor=".$survivor["id"]."'>Edit survivor</a></td><td>";
-            echo "<a href=\"javascript:popUp('http://dayz.st/loadout?".URLVARS."&id=".$survivor["id"]."')\">Show inventory</a>";
-            echo "</td><td>".$survivor["name"]."</td><td>".$survivor["id"]."</td><td>".$survivor["profileid"]."</td><td>".$survivor["survival_time"]." min</td><td>".$survivor["last_updated"]."</td>";
+            echo "<tr$alt>";
+            if (rights("survivor")) echo "<td><a href='./?p=edit&survivor=".$survivor["id"]."'>Edit survivor</a></td>";
+            if (rights("inventory")) echo "<td><a href=\"javascript:popUp('http://dayz.st/loadout?".URLVARS."&id=".$survivor["id"]."')\">Show inventory</a></td>";
+            echo "<td>".$survivor["name"]."</td><td>".$survivor["id"]."</td><td>".$survivor["profileid"]."</td><td>".$survivor["survival_time"]." min</td><td>".$survivor["last_updated"]."</td>";
             $alt = ($alt==""?" class=\"alt\"":"");
             
         }

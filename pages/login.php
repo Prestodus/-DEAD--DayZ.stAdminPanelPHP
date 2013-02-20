@@ -7,6 +7,7 @@ if (isset($_GET["out"]) AND $_GET["out"] == "1") {
     $_SESSION = array();
     echo "You are logged out.";
     echo "<meta http-equiv=\"Refresh\" content=\"0; url=./\">";
+    exit;
     
 }
 if ($loggedin === true) echo "You are logged in.";
@@ -32,28 +33,23 @@ else {
         
         if ($error == "") {
             
-        	if (array_key_exists($username, $users)) {
-        	   
-        		if ($password == $users[$username]) {
-      		  
-           			$_SESSION["loggedin"] = md5($username.$password.$salt);
-                    $showloggedmessage = 1;
-                    $showform = 0;
-                    echo "<meta http-equiv=\"Refresh\" content=\"0; url=./\">";
-        		  
-                } else {
-                    
-                    $error .= "Invalid password.";
-                    $showform = 1;
-                        
-                }
+            $query = $dbh->prepare("SELECT * FROM admin_users WHERE username = ? AND password = ? LIMIT 1");
+            $query->execute(array($username, $password));
+            if ($query->rowCount() > 0) {
                 
-        	} else {
-        	   
-                    $error .= "Invalid username.";
-                    $showform = 1;
+                $user = $query->fetch();
+     			$_SESSION["loggedin"] = md5($user["username"].$user["password"].$salt);
+     			$_SESSION["adminid"] = $user["id"];
+                $showloggedmessage = 1;
+                $showform = 0;
+                echo "<meta http-equiv=\"Refresh\" content=\"0; url=./\">";
                 
-        	}
+            } else {
+                
+                $error .= "Invalid username or password.";
+                $showform = 1;
+                
+            }
         
         }
     

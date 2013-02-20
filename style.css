@@ -6,6 +6,8 @@ body {
 
 a{color: #2b2b2b;}
 a:hover{font-weight: bold; text-decoration: none; color: #000;}
+.a{color: #2b2b2b; font-size: inherit;}
+.a:hover{font-weight: bold; text-decoration: none; color: #000; cursor: pointer;}
         
 .centerdiv {
             
@@ -32,11 +34,9 @@ a:hover{font-weight: bold; text-decoration: none; color: #000;}
 .menu {
     
     height: 35px;
-    width: 100%-180px;
     margin: 0px;
     padding: 0px;
     margin-top: -5px;
-    padding-left: 180px;
     background: url("images/menu.jpg") repeat-x top;
     text-align: center;
     
@@ -45,8 +45,8 @@ a:hover{font-weight: bold; text-decoration: none; color: #000;}
 .menulink {
     
     display: inline-block;
+    line-height: 35px;
     width: 130px;
-    float: left;
     
 }
 

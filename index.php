@@ -3,11 +3,8 @@
 session_start();
 
 require_once("config.php");
-$userexists = false;
-foreach($users as $username => $password) if (isset($_SESSION['loggedin']) AND md5($username.$password.$salt) == $_SESSION['loggedin']) $userexists = true;	
-if ($userexists !== true) $loggedin = false;
-else $loggedin = true;
-if ($loggedin === true) $dbh = new PDO($DB_CONNSTRING, $DB_USERNAME, $DB_PASSWORD);
+$dbh = new PDO($DB_CONNSTRING, $DB_USERNAME, $DB_PASSWORD);
+require_once("includes/check.php");
 
 ?>
 <!doctype html>
@@ -107,7 +104,7 @@ if ($loggedin === true) $dbh = new PDO($DB_CONNSTRING, $DB_USERNAME, $DB_PASSWOR
         
             <?php
             
-            $pages = array("players", "search", "login", "edit", "server");
+            $pages = array("players", "search", "login", "edit", "server", "admin", "password");
             if (isset($_GET["p"]) AND in_array($_GET["p"], $pages)) {
                 
                 include_once ("pages/".$_GET["p"].".php");
@@ -119,6 +116,8 @@ if ($loggedin === true) $dbh = new PDO($DB_CONNSTRING, $DB_USERNAME, $DB_PASSWOR
             }
             
             ?>
+        
+            <br />
         
         </div>
     
