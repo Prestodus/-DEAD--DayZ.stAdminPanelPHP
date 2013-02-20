@@ -1,7 +1,7 @@
 <h1>Edit survivor</h1>
 <?php
 
-if ($loggedin === false) { echo "Please log in to edit a survivor."; include_once("login.php"); }
+if ($loggedin === false OR !rights("survivor")) { echo "You do not have the rights to edit a survivor."; }
 else {
     
     if (!isset($_GET["survivor"]) OR !is_numeric($_GET["survivor"])) echo "You did not choose a survivor to edit.";
