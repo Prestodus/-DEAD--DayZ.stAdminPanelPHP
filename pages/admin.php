@@ -318,7 +318,7 @@ else {
                         echo "<tr$alt><td style='width: 100px; font-weight: bold; font-size: 15px;'>Userlevel</td><td><select name='userlevel'>";
                         foreach ($levels AS $level) {
                             
-                            echo "<option value='".$level["id"]."'>".$level["name"]."</option>";
+                            echo "<option value='".$level["id"]."'".($level["id"]==$user["rights"]?" selected='selected'":"").">".$level["name"]."</option>";
                             
                         }
                         echo "</select></td></tr>";
