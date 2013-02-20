@@ -14,7 +14,7 @@ else {
     
     }
     
-	echo "<p><a href=\"javaScript: popUp('http://dayz.st/ajax?a=spawnvehicles&".URLVARS."&limit=300');\">Click here to remove all old, damaged vehicles and respawn new ones</a>.<br />";
+	echo "<p><a href=\"javaScript: popUp('http://dayz.st/ajax?a=spawnvehicles&".URLVARS."&limit=600');\">Click here to remove all old, damaged vehicles and respawn new ones</a>.<br />";
 	if (rights("loadout")) echo "<a href=\"javascript:popUp('http://dayz.st/loadout?".URLVARS."')\">Click here to edit the default starting loadout</a>.</p>";
     
     if (rights("database")) {
