@@ -1,7 +1,7 @@
 <h1>Administrator settings</h1>
 <?php
 
-if ($loggedin === false OR !rights("server")) { echo "You do not have the rights to access this page."; }
+if ($loggedin === false OR !rights("admin")) { echo "You do not have the rights to access this page."; }
 else {
     
     $allrights = array("map" => "Open the map", "admin" => "Edit admin rights", "survivor" => "Edit survivors", "server" => "Start/stop/restart server", "loadout" => "Edit the starting loadout", "database" => "Access to the database", "inventory" => "Edit inventories");
