@@ -41,13 +41,13 @@ if (!$check2_go) {
         CREATE TABLE IF NOT EXISTS `admin_levels` (
           `id` int(5) NOT NULL AUTO_INCREMENT,
           `name` varchar(20) NOT NULL,
-          `rights` varchar(255) NOT NULL DEFAULT 'map,admin,users,',
+          `rights` varchar(255) NOT NULL DEFAULT 'map,admin,survivor,server,loadout,database,inventory,',
           PRIMARY KEY (`id`)
         ) AUTO_INCREMENT=2 ;
     ");
     $insert2 = $dbh->query("
         INSERT INTO `admin_levels` (`id`, `name`, `rights`) VALUES
-        (1, 'Administrator', 'map,admin,users,');
+        (1, 'Administrator', 'map,admin,survivor,server,loadout,database,inventory,');
     ");
         
 }
