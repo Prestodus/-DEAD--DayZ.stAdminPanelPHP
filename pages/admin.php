@@ -348,7 +348,7 @@ else {
                     echo "<tr$alt>";
                     echo "<td style='font-weight: bold;'>".$user["username"]."</td>";
                     echo "<td>".$user["levelname"]."</td>";
-                    echo "<td>".($user["id"]==1?"":"<a href='./?p=admin&action=accounts&user=".$user["id"]."'>Edit</a>")."</td>";
+                    echo "<td><a href='./?p=admin&action=accounts&user=".$user["id"]."'>Edit</a></td>";
                     echo "<td>".($user["id"]==$_SESSION["adminid"]?"":"<a href='./?p=admin&action=accounts&action2=".$user["id"]."' onclick=\"return confirm('Are you sure you want to delete user ".$user["username"]."?');\">Delete</a>")."</td>";
                     echo "</tr>";
                     $alt = ($alt==" class=\"alt\""?"":" class=\"alt\"");
