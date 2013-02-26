@@ -24,6 +24,11 @@ The current features include:
 
 Installation
 ============
+0: Pre-install checks
+----------
+First, go to this website: http://www.ismycomputeron.com/
+If it says Yes, proceed to the next step.
+
 1: Webhost (Skip if you already have one)
 ----------
 To install this, you will need a webhost.
