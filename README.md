@@ -47,6 +47,14 @@ Download and install it.
 
 3: Editing config.php
 ---------------------
+Method 1 (easiest):
+
+
+Go to http://rubencoolen.be/dayzadminpanel/configcreator.php and insert all the necessary data.
+
+Method 2:
+
+
 Now you should download this git and extract it to a local folder.
 Open the config.php file with a text editor of your choice. I recommend Notepad++.
 Here's what you need to edit: (You can find this information in the dayz.st control panel)
