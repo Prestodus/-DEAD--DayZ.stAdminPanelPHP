@@ -41,8 +41,8 @@ I recommend http://www.000webhost.com, it does the job quite well.
 
 2: FTP client (Skip if you already have one)
 -------------
-After that, you will receive an FTP host, username and password. (I currently cannot test the steps due to maintenance on Zymic)
-Next, you will need an FTP client. I recommend CoffeeCup (http://www.coffeecup.com/free-ftp/) due to it being super-simple yet effective.
+After that, you will receive an FTP host, username and password.
+Next, you will need an FTP client. If you don't have an FTP client yet, and you don't know much about this, I recommend CoffeeCup (http://www.coffeecup.com/free-ftp/) due to it being super-simple yet effective.
 Download and install it.
 
 3: Editing config.php
