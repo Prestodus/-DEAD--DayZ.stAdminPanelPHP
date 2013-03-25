@@ -1,6 +1,8 @@
 DayZ.stAdminPanelPHP (Current version: 1.4)
 ===========================================
-New: manage your admin users and permissions through the admin panel! Default admin account: username "admin", password "admin". Please change this!
+Manage your admin users and permissions through the admin panel!
+
+Default admin account: username "admin", password "admin". Please change this after you login for the first time!
 
 About / Features
 ================
