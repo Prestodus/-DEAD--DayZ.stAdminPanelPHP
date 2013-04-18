@@ -98,4 +98,4 @@ Try removing :port from the $DB_CONNSTRING on line 4 in config.php and reuploadi
 
 Contact
 =======
-If there are any more problems, please contact me on skype (swaxtraxx) or email (rubencoolen@live.be).
+I have stopped development and support for the admin panel. I appreciate all of the good responses I had from the community, but i just didn't have the time to continue. I have other projects now for which I receive money, while I did this for free. I hope the current version will continue to work. There might be a next one when I have more time, but until then, I'm off. Goodbye.
